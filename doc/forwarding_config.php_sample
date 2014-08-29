@@ -1,0 +1,17 @@
+<?php
+/*
+* You are need edit this file and put to /etc/forwarding_config.php
+*/
+#===========================================
+# MySQL:
+$dblocation = "localhost";
+$dbname = "asterisk";
+$dbuser = "asterisk";
+$dbpasswd = "XXXXXXXXXXXXXXXXXXXXX";
+#===========================================
+# Asterisk:
+            $UserName = "admin";
+            $Secret = "XXXXXXXXXXXX";
+            $asterisk_ip = "172.0.0.1";
+	    $manager_port = "5038";
+#===========================================
