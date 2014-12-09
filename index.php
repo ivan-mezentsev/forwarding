@@ -49,7 +49,7 @@ if ($_GET['action'] == "show") {
             <td><CITE>Внутр. номер</CITE></td><td><CITE>Безусловная</CITE></td><td><CITE>По-недоступности</CITE></td><td><CITE>По-занятости</CITE></td><td><CITE>По-неответу</CITE></td>
         </tr>
 
-        <?
+        <?php
         $tot = mysql_query("SELECT * FROM forwarding ORDER BY ext;");
         while ($themes = mysql_fetch_array($tot)) {
             // Вытаскиваем переменные из базы данных
@@ -83,13 +83,13 @@ if ($_GET['action'] == "show") {
                 $fwd_no_answer_state_html = "";
             ?>
             <tr>
-                <td><? print "<a href=\"?action=edit&item=$id\">$ext</a>" ?></td>
-                <td><? print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_always_state_html name=\"fwd_always_state\" value=\"$fwd_always_state\">$fwd_always_dst"; ?></td>
-                <td><? print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_not_available_state_html name=\"fwd_not_available_state\" value=\"$fwd_not_available_state\">$fwd_not_available_dst"; ?></td>
-                <td><? print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_busy_state_html name=\"fwd_busy_state\" value=\"$fwd_busy_state\">$fwd_busy_dst"; ?></td>
-                <td><? print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_no_answer_state_html name=\"fwd_no_answer_state\" value=\"$fwd_no_answer_state\">$fwd_no_answer_dst ($fwd_no_answer_time сек.)"; ?></td>
+                <td><?php print "<a href=\"?action=edit&item=$id\">$ext</a>" ?></td>
+                <td><?php print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_always_state_html name=\"fwd_always_state\" value=\"$fwd_always_state\">$fwd_always_dst"; ?></td>
+                <td><?php print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_not_available_state_html name=\"fwd_not_available_state\" value=\"$fwd_not_available_state\">$fwd_not_available_dst"; ?></td>
+                <td><?php print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_busy_state_html name=\"fwd_busy_state\" value=\"$fwd_busy_state\">$fwd_busy_dst"; ?></td>
+                <td><?php print "<input type=\"checkbox\" disabled=\"disabled\" $fwd_no_answer_state_html name=\"fwd_no_answer_state\" value=\"$fwd_no_answer_state\">$fwd_no_answer_dst ($fwd_no_answer_time сек.)"; ?></td>
             </tr>
-        <?
+        <?php
     }
     ?>
     </table>
@@ -99,7 +99,7 @@ if ($_GET['action'] == "show") {
             <td><a href="?action=add"><button>Добавить</button></a></td>
         </tr>
     </table>
-    <?
+    <?php
 } //Конец Секция отображения
 
 if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
@@ -263,20 +263,20 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
     if (empty($update_now)) {
         ?>
         <table align="center" border="0" width="90%" frame="void">
-            <tr><td colspan="6" align="center"><B>Редактирование #<? print $ext; ?></B></td></tr></table>
+            <tr><td colspan="6" align="center"><B>Редактирование #<?php print $ext; ?></B></td></tr></table>
 
-        <form method="post" action="?action=edit&item=<? print $id; ?>">
+        <form method="post" action="?action=edit&item=<?php print $id; ?>">
             <input type=hidden name=update_now value=post>
 
 
             <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                 <tr>
                     <td width="200"><B>Безусловная</B>:</td>
-                    <td width="200"><? print "<input type=\"checkbox\" $fwd_always_state_html name=\"fwd_always_state\" value=\"$fwd_always_state\">Включена"; ?></td>
+                    <td width="200"><?php print "<input type=\"checkbox\" $fwd_always_state_html name=\"fwd_always_state\" value=\"$fwd_always_state\">Включена"; ?></td>
                 </tr>
                 <tr>
-                    <td width="200"><? echo $Color1begin; ?>Номер для переадресации:<? echo $Color1end; ?></td>
-                    <td width="200"><input class="input" name="fwd_always_dst" value="<? echo $fwd_always_dst; ?>" /></td>
+                    <td width="200"><?php echo $Color1begin; ?>Номер для переадресации:<?php echo $Color1end; ?></td>
+                    <td width="200"><input class="input" name="fwd_always_dst" value="<?php echo $fwd_always_dst; ?>" /></td>
                 </tr>
             </table>
 
@@ -285,11 +285,11 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
             <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                 <tr>
                     <td width="200"><B>По-недоступности</B>:</td>
-                    <td width="200"><? print "<input type=\"checkbox\" $fwd_not_available_state_html name=\"fwd_not_available_state\" value=\"$fwd_not_available_state\">Включена"; ?></td>
+                    <td width="200"><?php print "<input type=\"checkbox\" $fwd_not_available_state_html name=\"fwd_not_available_state\" value=\"$fwd_not_available_state\">Включена"; ?></td>
                 </tr>
                 <tr>
-                    <td width="200"><? echo $Color2begin; ?>Номер для переадресации:<? echo $Color2end; ?></td>
-                    <td width="200"><input class="input" name="fwd_not_available_dst" value="<? echo $fwd_not_available_dst; ?>" /></td>
+                    <td width="200"><?php echo $Color2begin; ?>Номер для переадресации:<?php echo $Color2end; ?></td>
+                    <td width="200"><input class="input" name="fwd_not_available_dst" value="<?php echo $fwd_not_available_dst; ?>" /></td>
                 </tr>
             </table>
 
@@ -298,12 +298,12 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
             <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                 <tr>
                     <td width="200"><B>По-занятости</B>:</td>
-                    <td width="200"><? print "<input type=\"checkbox\" $fwd_busy_state_html name=\"fwd_busy_state\" value=\"$fwd_busy_state\">Включена"; ?></td>
+                    <td width="200"><?php print "<input type=\"checkbox\" $fwd_busy_state_html name=\"fwd_busy_state\" value=\"$fwd_busy_state\">Включена"; ?></td>
                 </tr>
                 <tr>
               <!--   <td width="200"><FONT COLOR="RED">Номер для переадресации:</FONT></td>-->
-                    <td width="200"><? echo $Color3begin; ?>Номер для переадресации<? echo $Color3end; ?></td>
-                    <td width="200"><input class="input" name="fwd_busy_dst" value="<? echo $fwd_busy_dst; ?>" /></td>
+                    <td width="200"><?php echo $Color3begin; ?>Номер для переадресации<?php echo $Color3end; ?></td>
+                    <td width="200"><input class="input" name="fwd_busy_dst" value="<?php echo $fwd_busy_dst; ?>" /></td>
                 </tr>
             </table>
 
@@ -312,15 +312,15 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
             <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                 <tr>
                     <td width="200"><B>По-неответу</B>:</td>
-                    <td width="200"><? print "<input type=\"checkbox\" $fwd_no_answer_state_html name=\"fwd_no_answer_state\" value=\"$fwd_no_answer_state\">Включена"; ?></td>
+                    <td width="200"><?php print "<input type=\"checkbox\" $fwd_no_answer_state_html name=\"fwd_no_answer_state\" value=\"$fwd_no_answer_state\">Включена"; ?></td>
                 </tr>
                 <tr>
-                    <td width="200"><? echo $Color4begin; ?>Время (1-120 сек.):<? echo $Color4end; ?></td>
-                    <td width="200"><input class="input" name="fwd_no_answer_time" value="<? echo $fwd_no_answer_time; ?>" /></td>
+                    <td width="200"><?php echo $Color4begin; ?>Время (1-120 сек.):<?php echo $Color4end; ?></td>
+                    <td width="200"><input class="input" name="fwd_no_answer_time" value="<?php echo $fwd_no_answer_time; ?>" /></td>
                 </tr>
                 <tr>
-                    <td width="200"><? echo $Color5begin; ?>Номер для переадресации:<? echo $Color5end; ?></td>
-                    <td width="200"><input class="input" name="fwd_no_answer_dst" value="<? echo $fwd_no_answer_dst; ?>" /></td>
+                    <td width="200"><?php echo $Color5begin; ?>Номер для переадресации:<?php echo $Color5end; ?></td>
+                    <td width="200"><input class="input" name="fwd_no_answer_dst" value="<?php echo $fwd_no_answer_dst; ?>" /></td>
 
                 </tr>
             </table>
@@ -330,7 +330,7 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
                     <td><button type="submit">Сохранить</button></td>  
                     <td><button type="reset">Сбросить</button></form></td>
                     <td>
-                        <form method="post" action="?action=del&item=<? print $id; ?>">
+                        <form method="post" action="?action=del&item=<?php print $id; ?>">
                             <input type="submit" value="Удалить">
                         </form>
                     </td>
@@ -341,7 +341,7 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
                     </td>
                 </tr>
             </table>
-            <?
+            <?php
         }
     } //Конец Секция редактирования конкретного напрвления
 
@@ -498,56 +498,56 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
                 <input type=hidden name=update_now value=post>
                 <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                     <tr>
-                        <td width="200"><B><? echo $Color0begin; ?>Внутренний номер:<? echo $Color0end; ?></B></td>
-                        <td width="200"><input class="input" name="ext" value="<? echo $ext; ?>" /></td>
+                        <td width="200"><B><?php echo $Color0begin; ?>Внутренний номер:<?php echo $Color0end; ?></B></td>
+                        <td width="200"><input class="input" name="ext" value="<?php echo $ext; ?>" /></td>
                     </tr>
                 </table>
                 <table align="center" border="0" width="90%" frame="void"><tr><td></td></tr></table>
                 <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                     <tr>
                         <td width="200"><B>Безусловная</B>:</td>
-                        <td width="200"><? print "<input type=\"checkbox\" $fwd_always_state_html name=\"fwd_always_state\" value=\"$fwd_always_state\">Включена"; ?></td>
+                        <td width="200"><?php print "<input type=\"checkbox\" $fwd_always_state_html name=\"fwd_always_state\" value=\"$fwd_always_state\">Включена"; ?></td>
                     </tr>
                     <tr>
-                        <td width="200"><? echo $Color1begin; ?>Номер для переадресации:<? echo $Color1end; ?></td>
-                        <td width="200"><input class="input" name="fwd_always_dst" value="<? echo $fwd_always_dst; ?>" /></td>
+                        <td width="200"><?php echo $Color1begin; ?>Номер для переадресации:<?php echo $Color1end; ?></td>
+                        <td width="200"><input class="input" name="fwd_always_dst" value="<?php echo $fwd_always_dst; ?>" /></td>
                     </tr>
                 </table>
                 <table align="center" border="0" width="90%" frame="void"><tr><td></td></tr></table>
                 <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                     <tr>
                         <td width="200"><B>По-недоступности</B>:</td>
-                        <td width="200"><? print "<input type=\"checkbox\" $fwd_not_available_state_html name=\"fwd_not_available_state\" value=\"$fwd_not_available_state\">Включена"; ?></td>
+                        <td width="200"><?php print "<input type=\"checkbox\" $fwd_not_available_state_html name=\"fwd_not_available_state\" value=\"$fwd_not_available_state\">Включена"; ?></td>
                     </tr>
                     <tr>
-                        <td width="200"><? echo $Color2begin; ?>Номер для переадресации:<? echo $Color2end; ?></td>
-                        <td width="200"><input class="input" name="fwd_not_available_dst" value="<? echo $fwd_not_available_dst; ?>" /></td>
+                        <td width="200"><?php echo $Color2begin; ?>Номер для переадресации:<?php echo $Color2end; ?></td>
+                        <td width="200"><input class="input" name="fwd_not_available_dst" value="<?php echo $fwd_not_available_dst; ?>" /></td>
                     </tr>
                 </table>
                 <table align="center" border="0" width="90%" frame="void"><tr><td></td></tr></table>
                 <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                     <tr>
                         <td width="200"><B>По-занятости</B>:</td>
-                        <td width="200"><? print "<input type=\"checkbox\" $fwd_busy_state_html name=\"fwd_busy_state\" value=\"$fwd_busy_state\">Включена"; ?></td>
+                        <td width="200"><?php print "<input type=\"checkbox\" $fwd_busy_state_html name=\"fwd_busy_state\" value=\"$fwd_busy_state\">Включена"; ?></td>
                     </tr>
                     <tr>
-                        <td width="200"><? echo $Color3begin; ?>Номер для переадресации<? echo $Color3end; ?></td>
-                        <td width="200"><input class="input" name="fwd_busy_dst" value="<? echo $fwd_busy_dst; ?>" /></td>
+                        <td width="200"><?php echo $Color3begin; ?>Номер для переадресации<?php echo $Color3end; ?></td>
+                        <td width="200"><input class="input" name="fwd_busy_dst" value="<?php echo $fwd_busy_dst; ?>" /></td>
                     </tr>
                 </table>
                 <table align="center" border="0" width="90%" frame="void"><tr><td></td></tr></table>
                 <table align="center" cellspacing="2" cellpadding="2" width="450" frame="border" bgcolor="#f4f4f4">
                     <tr>
                         <td width="200"><B>По-неответу</B>:</td>
-                        <td width="200"><? print "<input type=\"checkbox\" $fwd_no_answer_state_html name=\"fwd_no_answer_state\" value=\"$fwd_no_answer_state\">Включена"; ?></td>
+                        <td width="200"><?php print "<input type=\"checkbox\" $fwd_no_answer_state_html name=\"fwd_no_answer_state\" value=\"$fwd_no_answer_state\">Включена"; ?></td>
                     </tr>
                     <tr>
-                        <td width="200"><? echo $Color4begin; ?>Время (1-120 сек.):<? echo $Color4end; ?></td>
-                        <td width="200"><input class="input" name="fwd_no_answer_time" value="<? echo $fwd_no_answer_time; ?>" /></td>
+                        <td width="200"><?php echo $Color4begin; ?>Время (1-120 сек.):<?php echo $Color4end; ?></td>
+                        <td width="200"><input class="input" name="fwd_no_answer_time" value="<?php echo $fwd_no_answer_time; ?>" /></td>
                     </tr>
                     <tr>
-                        <td width="200"><? echo $Color5begin; ?>Номер для переадресации:<? echo $Color5end; ?></td>
-                        <td width="200"><input class="input" name="fwd_no_answer_dst" value="<? echo $fwd_no_answer_dst; ?>" /></td>
+                        <td width="200"><?php echo $Color5begin; ?>Номер для переадресации:<?php echo $Color5end; ?></td>
+                        <td width="200"><input class="input" name="fwd_no_answer_dst" value="<?php echo $fwd_no_answer_dst; ?>" /></td>
                     </tr>
                 </table>
                 <table align="center" border="0" width="90%" frame="void"><tr><td></td></tr></table>
@@ -562,7 +562,7 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
                         </td>
                     </tr>
                 </table>
-                <?
+                <?php
             }
         } //Конец добавления нового направления
 
@@ -602,7 +602,7 @@ if ($_GET['action'] == "edit" AND $_GET['item'] != "") {
             $socket = fsockopen($asterisk_ip, $manager_port, $errno, $errstr, $timeout);
             if (!$socket) {
                 echo 'Socket fail<br>';
-                echo $errorno . '<br>';
+                echo $errno . '<br>';
                 echo $errstr . '<br>';
                 echo $timeout . '<br>';
             } else {

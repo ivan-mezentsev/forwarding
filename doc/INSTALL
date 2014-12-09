@@ -1,0 +1,34 @@
+======= CentOS 6 =======
+To install:
+
+cd /var/www/
+git clone https://ivan-mezentsev@bitbucket.org/ivan-mezentsev/forwarding.git
+
+cp /var/www/forwarding/doc/forwarding_config.php_sample /etc/forwarding_config.php
+
+nano -w /etc/forwarding_config.php
+
+echo "
+
+Alias /forwarding /var/www/forwarding
+<Directory /var/www/forwarding/>
+AllowOverride All
+Options +Indexes
+</Directory>
+" >> /etc/httpd/conf.d/ssl.conf
+
+OR
+
+echo "
+
+Alias /forwarding /var/www/forwarding
+<Directory /var/www/forwarding/>
+AllowOverride All
+Options +Indexes
+</Directory>
+" >> /etc/httpd/conf/httpd.conf
+
+
+service httpd reload
+
+ToDo: вставить инструкцию импорта дампа mysql

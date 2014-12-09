@@ -10,8 +10,8 @@ $dbuser = "asterisk";
 $dbpasswd = "XXXXXXXXXXXXXXXXXXXXX";
 #===========================================
 # Asterisk:
-            $UserName = "admin";
-            $Secret = "XXXXXXXXXXXX";
-            $asterisk_ip = "172.0.0.1";
-	    $manager_port = "5038";
+$UserName = "admin";
+$Secret = "XXXXXXXXXXXX";
+$asterisk_ip = "172.0.0.1";
+$manager_port = "5038";
 #===========================================
